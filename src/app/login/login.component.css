@@ -1,0 +1,82 @@
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+mat-form-field {
+    width: 250px;
+    background-color: var(--body-bg-color);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background: var(--header-bg-color);
+    border: 1px solid #000;
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 12px;
+    color: red;
+}
+
+input {
+    color: var(--body-color);
+}
+
+mat-label {
+    color: var(--body-color);
+}
+
+#password {
+    background-color: transparent !important;
+    border: var(--body-color) !important;
+    color: var(--body-color);
+}
+
+h2 {
+    text-align: center !important;
+}
+
+#button {
+    background-color: transparent;
+    height: 40px;
+    width: 250px;
+    border: none;
+    font-weight: 600;
+    padding: 0 20px;
+    border-radius: 8px 8px 8px 8px;
+    color: #fff;
+    cursor: pointer;
+    border: solid;
+    margin-left: 5px;
+    transition: all 100ms ease-in-out;
+}
+
+#button:hover {
+    color: black;
+    background-color: #fff;
+}
+
+#buttonSignUp {
+    border: none;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    margin-top: 5%;
+}
+
+#buttonSignUp:hover {
+    color: rgba(255, 255, 255, 0.555);
+}

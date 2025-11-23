@@ -1,0 +1,219 @@
+<div class="job">
+    <div class="header">
+        <div class="logo">
+            <a mat-raised-button routerLink="/home-page">
+                <p id="title-img"><img id="logo" src="../../assets/Images/logo.png" width="45px" height="45px"></p>
+                <p id="title-project"> Decoder Integrity Check </p>
+            </a>
+        </div>
+        <div class="header-menu">
+            <a class="homeActive" mat-raised-button routerLink="/home-page">Home Page</a>
+            <a id="currentPage" class="uplaodFileActive" mat-raised-button routerLink="/upload-files">Upload Files</a>
+            <a class="historyChecksActive" mat-raised-button routerLink="/history-checks">History Check</a>
+            <a mat-raised-button routerLink="/users" *ngIf="authGuard.userRole == 'Admin'">Users</a>
+        </div>
+        <div class="sideHeader">
+            <label id="user-name">{{authGuard.userName}}</label>
+            <a mat-raised-button routerLink="/login">
+                <p>Logout</p>
+            </a>
+            <a mat-raised-button routerLink="/login">
+                <mat-icon id="logout-icon">logout</mat-icon>
+            </a>
+        </div>
+    </div> 
+
+    <div *ngIf="inIntroduction == true" class="uploadInstruction">
+        <br> <br> <br>
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Upload Files Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for upload files to check your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="letsUpload()" matTooltip="You can check your decoder only after you fill all the fields">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Upload Files For Check Decoder</div>
+                                <div class="job-card-subtitle">
+                                    Let's upload files to check your decoder integrity...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/bits.png">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Upload Files Guideline</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="overview-text-header">Steps for upload files</div>
+                        <div class="overview-text-item">Click on the card with the title "Upload Files For Check
+                            Decoder" at the left side of this page.</div>
+                        <div class="overview-text-item">Upload the ICD file. The type of this file must be json.</div>
+                        <div class="overview-text-item">Upload the decoder file that apropriate to ICD file. The type
+                            of this file must be ngp. The ngp file must include the decoder file in dll and setting
+                            file in json. The setting file include: decoder name, decoder version, decoder writing date
+                            and data link.</div>
+                        <div class="overview-text-item">Choose the throught check that you want to check your decoder.
+                            You can see explain about every throught check.</div>
+                        <div class="overview-text-item">Choose the native check that you want to check your decoder.
+                            You can see explain about every native check. You can see also the estimated time for
+                            every native check. </div>
+                        <div class="overview-text-item">Click on the button "submit" for check your decoder.</div>
+                        <div class="overview-text-item">After on click "submit", you can see the result of decoder
+                            check in real time.</div>
+                        <div class="overview-text-item">If you don't fill all the fields, you will not be able to
+                            move forward.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="inCheckDecoder == true" class="checkDecoder">
+        <br> <br> <br>
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="readUploadInstruction()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Upload Files Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for upload files to check your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard" matTooltip="You can check your decoder only after you fill all the fields">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Upload Files For Check Decoder</div>
+                                <div class="job-card-subtitle">
+                                    Let's upload files to check your decoder integrity...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/launch.png">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Upload Files For Check Decoder</div>
+                    </div>
+                    <div class="overview-text">
+                        <mat-stepper linear #stpper>
+                            <mat-step [stepControl]="uploadIcdFormGroup" [completed]="false">
+                                <form [formGroup]="uploadIcdFormGroup">
+                                    <ng-template matStepLabel id="stepperTitle">Upload ICD File</ng-template>
+                                    <label><strong>ICD File </strong></label>
+                                    <input type="file" accept="application/json" (change)="onUploadIcdFile($event)"
+                                        formControlName="uploadIcdCtrl"> <br> <br>
+                                    <div>
+                                        <button mat-button matStepperNext [disabled]="icdFile == null">Next</button>
+                                    </div>
+                                    <p id="problemInFile" *ngIf="isUploadIncorrectIcdFile == true">Error: you must
+                                        upload file from json type</p>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="uploadDecoderFormGroup" [completed]="false">
+                                <form [formGroup]="uploadDecoderFormGroup">
+                                    <ng-template matStepLabel id="stepperTitle">Upload Decoder File</ng-template>
+                                    <ng-template matStepContent>
+                                        <label><strong>Decoder File </strong></label>
+                                        <input type="file" accept=".ngp" (change)="onUploadDataFile($event)"
+                                            formControlName="uploadDecoderCtrl"> <br> <br>
+                                        <div>
+                                            <button mat-button matStepperPrevious>Back</button>
+                                            <button mat-button matStepperNext [disabled]="decoderFile == null">Next</button>
+                                        </div>
+                                        <p id="problemInFile" *ngIf="isUploadIncorrectDecoderFile == true">Error: you
+                                            must upload file from ngp type</p>
+                                    </ng-template>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="throughCheckFormGroup" [completed]="false">
+                                <form [formGroup]="throughCheckFormGroup">
+                                    <ng-template matStepLabel id="stepperTitle">Choose Throught Check</ng-template>
+                                    <ng-template matStepContent>
+                                        <p><strong>Do you want to check your decoder using random sets or serial sets?</strong></p>
+                                        <br>
+                                        <mat-radio-group aria-label="Select an option" formControlName="throughCheckCtrl"
+                                            required>
+                                            <div class="infoTroughtCheck"><mat-radio-button value="1" (click)="updateIfCheckWithRandom(true)">Check
+                                                With Random Sets</mat-radio-button> <button id="moreInfoButton"
+                                                matTooltip="In this check, we create sets with random values for each item. The random is between min and max value of each item according to the ICD file"
+                                                matTooltipPosition="right">
+                                                <mat-icon>info</mat-icon>
+                                            </button></div> <br> <br>
+                                            <div class="infoTroughtCheck"><mat-radio-button value="2" (click)="updateIfCheckWithRandom(false)">Check
+                                                With Serial Sets</mat-radio-button> <button id="moreInfoButton"
+                                                matTooltip="In this check, the first set is with min value of each item. After that, the server increase every value item until all the values of items equal to the max value"
+                                                matTooltipPosition="right">
+                                                <mat-icon>info</mat-icon>
+                                            </button></div>
+                                        </mat-radio-group> <br> <br>
+                                        <div>
+                                            <button mat-button matStepperPrevious>Back</button>
+                                            <button mat-button matStepperNext [disabled]="isChooseThroughtCheck == false">Next</button>
+                                        </div>
+                                    </ng-template>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="nativeCheckFormGroup" [completed]="false">
+                                <form [formGroup]="nativeCheckFormGroup">
+                                    <ng-template matStepLabel id="stepperTitle">Choose Native Check</ng-template>
+                                    <ng-template matStepContent>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Choose The Native Check</mat-label>
+                                            <mat-select [(value)]="nativeCheckSelected" formControlName="nativeCheckCtrl"
+                                                required disableOptionCentering>
+                                                <mat-option *ngFor="let checkType of typesOfCheck" [value]="checkType"
+                                                    (click)="updateNativeCheck(checkType)">{{checkType}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <p> Description For Native Check: {{descriptionSelectedNativeCheck}} </p>
+                                        <p> Estimated Time To Check : {{timeToCheckSelectedNativeCheck}} </p> <br>
+                                        <div>
+                                            <button mat-button matStepperPrevious>Back</button>
+                                            <button mat-button matStepperNext [disabled]="timeToCheckSelectedNativeCheck == 'Calculate time...'">Next</button>
+                                        </div>
+                                    </ng-template>
+                                </form>
+                            </mat-step>
+                            <mat-step [completed]="false">
+                                <ng-template matStepLabel id="stepperTitle">Done!</ng-template>
+                                <div>
+                                    <button (click)="sendParametersForCheckDcoder(false)">Submit</button> <br> <br>
+                                </div>
+                            </mat-step>
+                        </mat-stepper>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

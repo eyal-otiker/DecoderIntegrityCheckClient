@@ -1,0 +1,24 @@
+<div>
+<div class="title-card">
+<p>Type: </p>
+<p *ngIf="data.name == 'Proper'" id="proper"> <strong>{{data.name}}</strong></p>
+<p *ngIf="data.name == 'Not Proper'" id="not-proper"><strong>{{data.name}}</strong></p>
+<p *ngIf="data.name == 'Not Valid'" id="not-valid"><strong>{{data.name}}</strong></p>
+<p id="parameter">Parameters</p>
+</div>
+<p>Check Date: {{data.date}}</p>
+<p>Value: {{data.value}}%</p>
+</div>
+
+<cdk-virtual-scroll-viewport class="parameters-list" itemSize=data.itemsName.length *ngIf="data.itemsName.length > 0">
+  <div class="title"><strong>Parameters Name</strong></div>
+  <dl class="example-dl">
+    <ng-container *cdkVirtualFor="let item of data.itemsName">
+      <p id="items">{{item}}</p>
+    </ng-container>
+  </dl>
+</cdk-virtual-scroll-viewport>
+<p *ngIf="data.itemsName.length == 0"><strong>Not parameters found</strong></p>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

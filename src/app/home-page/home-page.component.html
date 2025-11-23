@@ -1,0 +1,139 @@
+<div class="job">
+    <div class="header">
+        <div class="logo">
+            <a mat-raised-button routerLink="/home-page">
+                <p id="title-img"><img id="logo" src="../../assets/Images/logo.png" width="45px" height="45px"></p>
+                <p id="title-project"> Decoder Integrity Check </p>
+            </a>
+        </div>
+        <div class="header-menu">
+            <a id="currentPage" class="homeActive" mat-raised-button routerLink="/home-page">Home Page</a>
+            <a class="uplaodFileActive" mat-raised-button routerLink="/upload-files">Upload Files</a>
+            <a class="historyChecksActive" mat-raised-button routerLink="/history-checks">History Check</a>
+            <a mat-raised-button routerLink="/users" *ngIf="authGuard.userRole == 'Admin'">Users</a>
+        </div>
+        <div class="sideHeader">
+            <label id="user-name">{{authGuard.userName}}</label>
+            <a mat-raised-button routerLink="/login">
+                <p>Logout</p>
+            </a>
+            <a mat-raised-button routerLink="/login">
+                <mat-icon id="logout-icon">logout</mat-icon>
+            </a>
+        </div>
+
+    </div>
+
+    <br>
+    <div class="welcomeHomePage">
+        <div class="welcomeHomePageText">
+        <!-- <h2 id="welcomeText">Welcome to decoder check website!</h2> -->
+        <h1 id="check">Check your decoder in easily</h1>
+        <p id="welcomeText">Discover the platform that gives you the option to check your decoder</p>
+        <!-- <p id="welcomeText">Let's start! </p> -->
+        </div>
+    </div>
+
+    <div *ngIf="inHistroyCheckInstruction == true" class="instructionHistoryCheck">
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="readCheckDecoderIntroduction()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for check your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">                          
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for see the history check of your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/cryptograph.png">
+                <div class="job-logos">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#f76754">
+            <path xmlns="http://www.w3.org/2000/svg" d="M0 .5h4.2v23H0z" fill="#042b48" data-original="#212121" />
+            <path xmlns="http://www.w3.org/2000/svg" d="M15.4.5a8.6 8.6 0 100 17.2 8.6 8.6 0 000-17.2z" fill="#fefefe" data-original="#f4511e" /></svg> -->
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Decoder History Check Guideline</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="overview-text-header">Steps for see your history decoder check</div>
+                        <div class="overview-text-item">Click on "History Check" on the navigate bar at the up of the
+                            page. This click will take you to history check page.</div>
+                        <div class="overview-text-item">Click in history check page on the card that write "Decoder
+                            Check History Guideline" for read the instructions. You will see this card at the left side
+                            of the page.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="inCheckDecoderIntroduction == true" class="instructionUploadPage">
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for check your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail" (click)="readHistoryCheckIntroduction()">
+                                <div class="job-card-title">Decoder Check History Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for see the history check of your decoder...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/AI_Binary.png">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Decoder Check Guideline</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="overview-text-header">Steps for check your decoder</div>
+                        <div class="overview-text-item">Click on "Upload Files" on the navigate bar at the up of the
+                            page. This click will take you to upload file page.</div>
+                        <div class="overview-text-item">Click in upload files page on the card that write "Upload Files
+                            Guideline" for read the instructions. You will see this card at the left side of the page.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

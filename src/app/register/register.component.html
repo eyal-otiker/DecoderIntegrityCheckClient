@@ -1,0 +1,42 @@
+<div class="login">
+    <img id="logo-start-page" src="../../assets/Images/logo.png">
+    <h2>Register</h2> <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput #userInput (keyup)="setUserName(userInput.value)">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" #passInput (keyup)="setPassword(passInput.value)">
+
+        <button id="password" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Repeat Password</mat-label>
+        <input matInput [type]="hideRepeatPassword ? 'password' : 'text'" #repInput (keyup)="setRepeatPassword(repInput.value)">
+
+        <button id="password" mat-icon-button matSuffix (click)="hideRepeatPassword = !hideRepeatPassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPassword">
+            <mat-icon>{{hideRepeatPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill"> 
+        <mat-label>Who can see your decoder?</mat-label> 
+        <mat-select disableOptionCentering disableRipple required> 
+            <mat-option *ngFor="let permission of decoderPermissions" [value]="permission" (click)="setDecoderPremission(permission)">{{permission}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <p *ngIf="repeatPassword != '' && repeatPassword != password">The password and repeat password are not same</p>
+    <p *ngIf="mustFillFields == true && (userName != '' || password != '' || repeatPassword != '' || decoderPermissionChosen != '')">You didn't fill all the fields</p> 
+
+    <button id="buttonSign" (click)="signUp()">SignUp</button> 
+    <a id="buttonLog" (click)="moveToLoginPage()">Already have an account?</a>
+</div>

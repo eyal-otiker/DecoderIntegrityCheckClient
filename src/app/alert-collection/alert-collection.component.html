@@ -1,0 +1,198 @@
+<div class="job">
+    <div class="header">
+        <div class="logo">
+            <a mat-raised-button routerLink="/home-page">
+                <p id="title-img"><img id="logo" src="../../assets/Images/logo.png" width="45px" height="45px"></p>
+                <p id="title-project"> Decoder Integrity Check </p>
+            </a>
+        </div>
+        <div class="header-menu">
+            <a class="homeActive" mat-raised-button routerLink="/home-page" (click)="closePage()">Home Page </a>
+            <a class="uplaodFileActive" mat-raised-button routerLink="/upload-files" (click)="closePage()">Upload Files</a>
+            <a class="historyChecksActive" mat-raised-button routerLink="/history-checks" (click)="closePage()">History
+                Check</a>
+            <a mat-raised-button routerLink="/users" *ngIf="authGuard.userRole == 'Admin'">Users</a>
+        </div>
+        <div class="sideHeader">
+            <label id="user-name">{{authGuard.userName}}</label>
+            <a mat-raised-button routerLink="/login">
+                <p>Logout</p>
+            </a>
+            <a mat-raised-button routerLink="/login">
+                <mat-icon id="logout-icon">logout</mat-icon>
+            </a>
+        </div>
+    </div>
+
+    <br>
+    <div class="gridsterGauges">
+        <br> <br> <br>
+        <gridster [options]="options">
+            <gridster-item [item]="item" *ngFor="let item of dashboard">
+                <div class="titleAndInfo">
+                    <h2 id="gaugeTitle">{{gaugeParameters[item['propName']].name}}</h2>
+                    <button matTooltip="{{cardInformation[gaugeParameters[item['propName']].name]}}" matTooltipPosition="right">
+                        <mat-icon id="gaugeIcon">info</mat-icon>
+                    </button>
+                </div>
+                <ngx-gauge backgroundColor="{{gaugeParameters[item['propName']].backgroundColor}}" foregroundColor="{{gaugeParameters[item['propName']].foregroundColor}}"
+                    [thick]="gaugeParameters[item['propName']].thick" [size]="gaugeParameters[item['propName']].size"
+                    type="semi" [value]="gaugeParameters[item['propName']].value" [max]="gaugeParameters[item['propName']].max"
+                    append="{{gaugeParameters[item['propName']].append}}" label="{{gaugeParameters[item['propName']].label}}">
+                </ngx-gauge>
+            </gridster-item>
+        </gridster>
+    </div>
+
+    <br> <br> <br> <br>
+    <mat-card id="progressBarCard">
+        <mat-card-header>
+            <mat-card-title id="progressBarTitle"><strong>Progress Bar</strong></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-progress-bar mode="determinate" [value]="precentFrameCheck"></mat-progress-bar>
+            <p>{{numOfCheckedOptions}} / {{numOfFrameCheck}} ({{precentFrameCheck}}%)</p>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="generalData">
+        <mat-card id="timeCard">
+            <mat-card-header>
+                <mat-card-title><strong>Average Time To Check</strong></mat-card-title>
+                <button matTooltip="You can see here the average time for a single check" matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{timeToCheckAvgString}} seconds</p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card id="throughtCheckCard">
+            <mat-card-header>
+                <mat-card-title><strong>Throught Check</strong></mat-card-title>
+                <button matTooltip="You can see here how you chose to check your decoder (random/serial sets)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{throughtCheckDescription}}</p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card id="nativeCheckCard">
+            <mat-card-header>
+                <mat-card-title><strong>Native Check</strong></mat-card-title>
+                <button matTooltip="You can see here the native check you chose yo check your decoder (easy/medium/deep/extra deep)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{nativeCheckSelected}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="decoderData">
+        <mat-card id="decoderNameCard">
+            <mat-card-header>
+                <mat-card-title><strong>Decoder Name</strong></mat-card-title>
+                <button matTooltip="You can see here the name that you called to your decoder (this data was taken from the setting file)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{decoderName}}</p>
+            </mat-card-content>
+        </mat-card>
+        
+        <mat-card id="decoderDateCard">
+            <mat-card-header>
+                <mat-card-title><strong>Decoder Writing Date</strong></mat-card-title>
+                <button matTooltip="You can here see the date that you write your decoder (this data was taken from the setting file)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{decoderWritingDate}}</p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card id="decoderVersionCard">
+            <mat-card-header>
+                <mat-card-title><strong>Decoder Version</strong></mat-card-title>
+                <button matTooltip="You can see here the decoder version of the decoder you check (this data was taken from the setting file)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{decoderVersion}}</p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card id="decoderDataLinkCard">
+            <mat-card-header>
+                <mat-card-title><strong>Decoder Data Link</strong></mat-card-title>
+                <button matTooltip="You can see here the data link of the decoder you check (this data was taken from the setting file)"
+                    matTooltipPosition="right">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <p id="matCardContent">{{decoderDataLink}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <h2 *ngIf="decoderName != ''">Result Of Every Check</h2>
+
+    <mat-accordion class="collection" multi>
+        <mat-expansion-panel *ngFor="let item of checkItemsArr">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Result Of {{item.name}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ngx-gauge backgroundColor="white" [foregroundColor]="green" [thick]="10" [size]="190" type="semi" [value]="item.countNumberAlert[3]"
+                [max]="100" append="%" label="{{item.properItems.length}} propers">
+            </ngx-gauge>
+
+            <ngx-gauge backgroundColor="white" [foregroundColor]="orange" [thick]="10" [size]="190" type="semi" [value]="item.countNumberAlert[4]"
+                [max]="100" append="%" label="{{item.notProperItems.length}} not propers">
+            </ngx-gauge>
+
+            <ngx-gauge backgroundColor="white" [foregroundColor]="red" [thick]="10" [size]="190" type="semi" [value]="item.countNumberAlert[5]"
+                [max]="100" append="%" label="{{item.notValidItems.length}} not valids">
+            </ngx-gauge>
+
+            <p>Time To Check : {{item.timeToCheck}} seconds</p>
+
+
+            <div class="overview-text" *ngIf="item.properItems.length != 0">
+                <div class="overview-text-header">Proper Items</div>
+                <div class="overview-text-item-proper" *ngFor="let itemName of item.properItems">{{itemName}}</div>
+            </div>
+
+            <div class="overview-text" *ngIf="item.notProperItems.length != 0">
+                <div class="overview-text-header">Not Proper Items</div>
+                <div class="overview-text-item-not-proper" *ngFor="let itemName of item.notProperItems">{{itemName}}</div>
+            </div>
+
+            <div class="overview-text" *ngIf="item.notValidItems.length != 0">
+                <div class="overview-text-header">Not Valid Items</div>
+                <div class="overview-text-item-not-valid" *ngFor="let itemName of item.notValidItems">{{itemName}}</div>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>

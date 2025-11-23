@@ -1,0 +1,464 @@
+<div class="job">
+    <div class="header">
+        <div class="logo">
+            <a mat-raised-button routerLink="/home-page">
+                <p id="title-img"><img id="logo" src="../../assets/Images/logo.png" width="45px" height="45px"></p>
+                <p id="title-project"> Decoder Integrity Check </p>
+            </a>
+        </div>
+        <div class="header-menu">
+            <a class="homeActive" mat-raised-button routerLink="/home-page">Home Page</a>
+            <a class="uplaodFileActive" mat-raised-button routerLink="/upload-files">Upload Files</a>
+            <a id="currentPage" class="historyChecksActive" mat-raised-button routerLink="/history-checks">History
+                Check</a>
+            <a mat-raised-button routerLink="/users" *ngIf="authGuard.userRole == 'Admin'">Users</a>
+        </div>
+        <div class="sideHeader">
+            <label id="user-name">{{authGuard.userName}}</label>
+            <a mat-raised-button routerLink="/login">
+                <p>Logout</p>
+            </a>
+            <a mat-raised-button routerLink="/login">
+                <mat-icon id="logout-icon">logout</mat-icon>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="inHidtoryCheckIntroduction == true" class="HistoryCheckInstruction">
+        <br> <br> <br>
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for get history decoder check...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="letsFilterInTable()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Table</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in table...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="letsFilterInGraph()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Graphs</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in graphs...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/history.png">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Decoder Check History Guideline</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="overview-text-header">Steps for see decoder history check</div>
+                        <div class="overview-text-item">If you want to filter with table, click on the card with the
+                            title "History Check Filter In Table" at the left side of this page.
+                            If you want to filter with graph, click on the card with the title "History Check Filter In
+                            Graphs" at the left side of this page.</div>
+                        <div class="overview-text-item">You can filter according to the fileds that show in the card.
+                        </div>
+                        <div class="overview-text-item">In filter with table, you can choose the fields you want to
+                            filter with them. In filter with graphs, you must filter with all the fields.</div>
+                        <div class="overview-text-item">Click on the button "filter" after your choose all the
+                            parameters for filter.</div>
+                        <div class="overview-text-item">After you press on the button, you wil see the result of the
+                            filter. In filter with table, you will see table with all the check and the details about
+                            them.
+                            In filter with graph, you will see 2 graphs. The first graph include the result of the 6
+                            checks. The second graph include linear graph with the grade of the last check in every
+                            month.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="inHistoryCheckFilterTable == true" class="filterHistoryCheck">
+        <br> <br> <br>
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="readHistoryCheckInstruction()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for get history decoder check...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Table</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in table...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="letsFilterInGraph()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Graphs</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in graphs...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/NewFilter.jpg" height="180px">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Filter History Checks In Table</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="filter">
+                            <div class="filter-item">
+                                <label>Decoder Name: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Decoder Name</mat-label>
+                                    <mat-select disableOptionCentering>
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let name of decoderNamesArr" [value]="name"
+                                            (click)="updateDecoderName(name)">{{name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item">
+                                <label>ICD Type: </label>
+                                <mat-form-field appearance="fill" id="field">
+                                    <mat-label>ICD Type</mat-label>
+                                    <mat-select disableOptionCentering>
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let type of icdTypesArr" [value]="type"
+                                            (click)="updateIcdType(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item">
+                                <label>Throught Check: </label>
+                                <mat-form-field appearance="fill" id="field">
+                                    <mat-label>Throught Check</mat-label>
+                                    <mat-select disableOptionCentering>
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let type of throughtCheckArr" [value]="type"
+                                            (click)="updateThroughtCheck(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item">
+                                <label>Native Check: </label>
+                                <mat-form-field appearance="fill" id="field">
+                                    <mat-label>Native Check</mat-label>
+                                    <mat-select disableOptionCentering>
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let type of nativeCheckArr" [value]="type"
+                                            (click)="updateNativeCheck(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button (click)="filterHistoryChecks()">Filter</button> <br>
+                        <h2 *ngIf="historyChecksArr.length == historyChecksLength && historyChecksArr.length > 0">History Check Table</h2>
+
+                        <div class="table">
+                            <table mat-table [dataSource]="dataSource"
+                                *ngIf="historyChecksArr.length == historyChecksLength && historyChecksArr.length > 0">
+
+                                <ng-container matColumnDef="Decoder Name">
+                                    <th mat-header-cell *matHeaderCellDef>Decoder Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.decoderName}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Download">
+                                    <th mat-header-cell *matHeaderCellDef>Download Decoder</th>
+                                    <td mat-cell *matCellDef="let element"><button id="downloadButton"
+                                            (click)="downloadDecoder(element)">
+                                            <mat-icon>download</mat-icon>
+                                        </button></td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Data Link">
+                                    <th mat-header-cell *matHeaderCellDef>Data Link</th>
+                                    <td mat-cell *matCellDef="let element">{{element.dataLink}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Decoder Version">
+                                    <th mat-header-cell *matHeaderCellDef>Decoder Version</th>
+                                    <td mat-cell *matCellDef="let element">{{element.decoderVersion}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Decoder Writing Date">
+                                    <th mat-header-cell *matHeaderCellDef>Decoder Writing Date</th>
+                                    <td mat-cell *matCellDef="let element">{{element.decoderWritingDate}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Check Date">
+                                    <th mat-header-cell *matHeaderCellDef>Check Date</th>
+                                    <td mat-cell *matCellDef="let element">{{element.checkDate}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Icd Type">
+                                    <th mat-header-cell *matHeaderCellDef>ICD Type</th>
+                                    <td mat-cell *matCellDef="let element">{{element.icdType}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Throught Check">
+                                    <th mat-header-cell *matHeaderCellDef>Throught Check</th>
+                                    <td mat-cell *matCellDef="let element">{{element.throughtCheck}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Native Check">
+                                    <th mat-header-cell *matHeaderCellDef>Native Check</th>
+                                    <td mat-cell *matCellDef="let element">{{element.nativeCheck}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Count Proper">
+                                    <th mat-header-cell *matHeaderCellDef>Count Proper</th>
+                                    <td mat-cell *matCellDef="let element">{{element.countProper}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Count Not Proper">
+                                    <th mat-header-cell *matHeaderCellDef>Count Not Proper</th>
+                                    <td mat-cell *matCellDef="let element">{{element.countNotProper}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Count Not Valid">
+                                    <th mat-header-cell *matHeaderCellDef>Count Not Valid</th>
+                                    <td mat-cell *matCellDef="let element">{{element.countNotValid}}</td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
+                        <mat-paginator *ngIf="historyChecksLength > 0" [length]="100" [pageSize]="5"
+                            [pageSizeOptions]="[5, 7, 10]" aria-label="Select page"></mat-paginator>
+
+                        <p *ngIf="historyChecksLength == 0" id="no-data-found"><strong>No data found</strong></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="inHistoryCheckFilterGraph == true">
+        <br> <br> <br>
+        <div class="job-overview">
+            <div class="job-overview-cards">
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="readHistoryCheckInstruction()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Guideline</div>
+                                <div class="job-card-subtitle">
+                                    Let's read the introduction for get history decoder check...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" (click)="letsFilterInTable()">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Table</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in table...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <div class="job-overview-card">
+                    <div class="job-card overview-card" id="currentCard">
+                        <div class="overview-wrapper">
+                            <div class="overview-detail">
+                                <div class="job-card-title">Decoder Check History Filter In Graphs</div>
+                                <div class="job-card-subtitle">
+                                    Let's filter and get history decoder check in graphs...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-explain">
+                <img class="job-bg" src="../../assets/Images/graph1.png" height="180px">
+                <div class="job-logos">
+                </div>
+                <div class="job-explain-content">
+                    <div class="job-title-wrapper">
+                        <div class="job-card-title">Filter History Checks In Graphs</div>
+                    </div>
+                    <div class="overview-text">
+                        <div class="filter">
+                            <div class="filter-item">
+                                <label>Decoder Name: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Decoder Name</mat-label>
+                                    <mat-select disableOptionCentering required>
+                                        <mat-option *ngFor="let name of decoderNamesArr" [value]="name"
+                                            (click)="updateDecoderName(name)">{{name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item">
+                                <label>Decoder Version: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Decoder Version</mat-label>
+                                    <mat-select disableOptionCentering required [disabled]="disableSelect.value">
+                                        <mat-option *ngFor="let name of decoderVersionsArr" [value]="name"
+                                            (click)="updateDecoderVersion(name)">{{name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item">
+                                <label>ICD Type: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>ICD Type</mat-label>
+                                    <mat-select disableOptionCentering required>
+                                        <mat-option *ngFor="let type of icdTypesArr" [value]="type"
+                                            (click)="updateIcdType(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="filter-special">
+                            <div class="filter-items-special">
+                                <label>Throught Check: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Throught Check</mat-label>
+                                    <mat-select disableOptionCentering required>
+                                        <mat-option *ngFor="let type of throughtCheckArr" [value]="type"
+                                            (click)="updateThroughtCheck(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="filter-item-special">
+                                <label>Native Check: </label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Native Check</mat-label>
+                                    <mat-select disableOptionCentering required>
+                                        <mat-option *ngFor="let type of nativeCheckArr" [value]="type"
+                                            (click)="updateNativeCheck(type)">{{type}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- <div class="filter">
+                            <div class="filter-item">
+                                <label>Weights For Count Proper: </label>
+                                <mat-slider matSlideThumb min="0" max="100" step="1" showTickMarks="true" discrete="true"
+                                    [(ngModel)]="valueProper" (input)="valueProper = $event.value">
+                                </mat-slider> <label>{{valueProper}}%</label>
+                            </div>
+                            <div class="filter-item">
+                                <label>Weights For Count Not Proper: </label>
+                                <mat-slider matSlideThumb min="0" max="100" step="1" showTickMarks="true" discrete="true"
+                                    [(ngModel)]="valueNotProper" (input)="valueNotProper = $event.value">
+                                </mat-slider> <label>{{valueNotProper}}%</label>
+                            </div>
+                            <div class="filter-item">
+                                <label>Weights For Count Not Valid: </label>
+                                <mat-slider matSlideThumb min="0" max="100" step="1" showTickMarks="true" discrete="true"
+                                    [(ngModel)]="valueNotValid" (input)="valueNotValid = $event.value">
+                                </mat-slider> <label>{{valueNotValid}}%</label>
+                            </div>
+                        </div>
+
+                        <label id="sumLabel">Sum Of Three Weights: {{valueProper + valueNotProper + valueNotValid}}%</label> 
+                        <p id="warnWeights" *ngIf="valueProper + valueNotProper + valueNotValid != 100">The sum
+                            of weights must be 100</p> -->
+                        <p id="CannotFilter"
+                            *ngIf="isFillAllParametersInFilterGraph == false && (!decoderName || !decoderVersion || !icdType || !throughtCheck || !nativeCheck)">
+                            You must fill all the fields for filter</p>
+                        <button (click)="filterHistoryCheckGraph()">Filter</button> <br>
+                        <p *ngIf="lengthHistoryCheckGraphLastChecks == 0"><strong>No data found</strong></p>
+
+                        <div class="checkInfo"
+                            *ngIf="historyCheckGraphLastChecks.length == lengthHistoryCheckGraphLastChecks && lengthHistoryCheckGraphLastChecks > 0">
+                            <p><strong>The result of the last 6 checks according to the filter</strong></p>
+                            <button id="moreInfoButton"
+                                matTooltip="For see the result of the parameters in every check, click on the result that you want to see"
+                                matTooltipPosition="right"> <mat-icon id="graphIcon">info</mat-icon> </button>
+                        </div>
+                        <table id="graph"
+                            *ngIf="historyCheckGraphLastChecks.length == lengthHistoryCheckGraphLastChecks && lengthHistoryCheckGraphLastChecks != 0">
+                            <tr>
+                                <td>
+                                    <ngx-charts-bar-vertical-2d [results]="historyCheckGraphLastChecks" [view]="view"
+                                        [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis"
+                                        [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+                                        [showYAxisLabel]="showYAxisLabel" [customColors]="customColors"
+                                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                                        [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition"
+                                        [animations]="animations" [showGridLines]="showGridLines"
+                                        [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled"
+                                        (select)="onSelect($event)"></ngx-charts-bar-vertical-2d>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <div class="checkInfo" *ngIf="historyCheckGraphMonths.length > 0">
+                            <p><strong>The grade of the last check in every month according to the filter</strong></p>
+                            <button id="moreInfoButton"
+                                matTooltip="grade = 2 * Precent Proper / (7 * Precent Not Proper + 15 * Precent Not Valid)"
+                                matTooltipPosition="right"> <mat-icon id="graphIcon">info</mat-icon> </button>
+                        </div>
+                        <div *ngIf="historyCheckGraphMonths.length > 0">
+                            <ngx-charts-line-chart *ngIf="historyCheckGraphMonths.length > 0" [view]="view"
+                                [gradient]="true" [legend]="false" [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis"
+                                [xAxisLabel]="xAxisLabelMonths" [yAxisLabel]="yAxisLabelMonths" [timeline]="timeline"
+                                [results]="historyCheckGraphMonths">
+                            </ngx-charts-line-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

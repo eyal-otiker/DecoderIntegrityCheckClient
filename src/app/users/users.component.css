@@ -1,0 +1,10 @@
+table {
+    background-color: var(--header-bg-color);
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+h2 {
+    text-align: center;
+}
+

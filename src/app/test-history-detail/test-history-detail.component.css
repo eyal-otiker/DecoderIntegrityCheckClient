@@ -1,0 +1,58 @@
+::ng-deep.mat-dialog-container {
+  /* max-height: 450px !important; */
+  color: var(--body-color) !important;
+  background-color: var(--header-bg-color) !important;
+}
+
+.parameters-list {
+  height: 200px;
+  border: 1px solid var(--body-color);
+}
+
+.parameters-list::-webkit-scrollbar {
+  display: none;
+}
+
+#items {
+  margin-left: 5px;
+}
+
+button {
+  background-color: transparent;
+  height: 40px;
+  font-weight: 600;
+  padding: 0 20px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  border: solid;
+  margin-right: 5px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--body-color);
+  padding: 0.5rem;
+}
+
+#proper {
+  color: green;
+}
+
+#not-proper {
+  color: orange
+}
+
+#not-valid {
+  color: red;
+}
+
+#proper, #not-proper, #not-valid, #parameter {
+  margin-left: 5px;
+}
+
+.title-card {
+  display: flex;
+  margin-bottom: -7%;
+}

@@ -1,0 +1,238 @@
+.summaryCollection {
+  margin-top: -24px;
+  margin-left: -8px;
+}
+
+/* button {
+  background-color: var(--active-color);
+  height: 30px;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px 8px 8px 8px;
+  color: #fff;
+  cursor: pointer;
+  border: solid;
+} */
+
+button {
+  background-color: var(--header-bg-color);
+  color: var(--body-bg-color);
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+#generalData button,
+#decoderData button {
+  background-color: var(--header-bg-color);
+  color: var(--header-bg-color);
+}
+
+.options-header {
+  margin-bottom: 5px;
+}
+
+.mat-expansion-panel-header {
+  font-size: 16px !important
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after,
+.mat-expansion-indicator::before {
+  color: var(--body-color) !important;
+}
+
+mat-expansion-panel {
+  background-color: var(--header-bg-color);
+  margin-bottom: 1px;
+}
+
+mat-panel-title,
+mat-panel-description,
+mat-expansion-panel-header {
+  color: var(--body-color);
+}
+
+
+::ng-deep .mat-slide-toggle-bar {
+  background-color: gray;
+}
+
+mat-slide-toggle {
+  z-index: 0;
+}
+
+p {
+  margin-left: 5px;
+  color: var(--body-color);
+}
+
+h2 {
+  font-size: 23px;
+  margin-left: 10px;
+}
+
+.collection ngx-gauge {
+  margin-right: 50px;
+  margin-left: 10px;
+}
+
+ngx-gauge {
+  height: 150%;
+  font-family: 'Tahoma';
+  color: var(--body-color);
+}
+
+.overview-text {
+  margin-top: 30px;
+}
+
+.overview-text-header {
+  color: var(--body-color);
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.overview-text-subheader {
+  font-size: 20px;
+  line-height: 2em;
+}
+
+.overview-text-item-proper,
+.overview-text-item-not-proper,
+.overview-text-item-not-valid {
+  color: var(--body-color);
+  font-size: 15px;
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+}
+
+.overview-text-item-proper:before,
+.overview-text-item-not-proper:before,
+.overview-text-item-not-valid:before {
+  content: "";
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  margin-right: 8px;
+  flex-shrink: 0;
+  margin-top: 0.1%;
+}
+
+.overview-text-item-proper:before {
+  border: 2px solid green;
+}
+
+.overview-text-item-not-proper:before {
+  border: 2px solid orange;
+}
+
+.overview-text-item-not-valid:before {
+  border: 2px solid red;
+}
+
+gridster {
+  background-color: var(--body-bg-color);
+}
+
+gridster-item {
+  background-color: var(--header-bg-color);
+  z-index: 0 !important;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+gridster-item ngx-gauge {
+  position: center;
+}
+
+.gridsterGauges {
+  position: unset;
+  height: 530px;
+  width: 100%;
+}
+
+mat-card {
+  background-color: var(--header-bg-color);
+  margin-bottom: 30px;
+}
+
+#timeCard,
+#throughtCheckCard,
+#nativeCheckCard {
+  width: 32%;
+  float: left;
+}
+
+#timeCard,
+#throughtCheckCard,
+#decoderNameCard,
+#decoderDateCard,
+#decoderVersionCard {
+  margin-right: 2%;
+}
+
+#decoderNameCard,
+#decoderDateCard,
+#decoderVersionCard,
+#decoderDataLinkCard {
+  width: 23.5%;
+  float: left;
+}
+
+.generalData,
+.decoderData {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+mat-card-title {
+  color: var(--body-color);
+}
+
+mat-card-title,
+mat-card-content {
+  font-family: var(--body-font);
+}
+
+#matCardContent {
+  margin-left: 15px;
+}
+
+mat-radio-button {
+  margin-right: 15px;
+}
+
+#gaugeTitle {
+  position: relative !important;
+  /* margin-left: 14%; */
+  float: left;
+}
+
+#gaugeIcon {
+  margin-left: 5px !important;
+}
+
+mat-icon {
+  color: var(--icon-color);
+  margin-left: -7px;
+}
+
+#progressBarTitle {
+  margin-left: -10%;
+}
+
+.titleAndInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#progressBarCard {
+  margin-left: 10px;
+  margin-right: 10px;
+}
