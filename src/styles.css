@@ -1,0 +1,388 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import 'material-icons-main/iconfont/material-icons.css';
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+:root {
+    --body-font: "Poppins", sans-serif;
+    --body-bg-color: #222831;
+    --body-color: #fff;
+    --header-bg-color: #393e46;
+    --active-light-color: #29a19c;
+    --option-color: #393e46a3;
+    --icon-color: #a3f7bf;
+    --active-color: #393e468f;
+    --header-active-color: rgba(255, 255, 255, 0.664);
+    --header-menu-active: rgba(255, 255, 255, 0.863);
+    --option-color: #393e46;
+}
+
+.dark-mode {
+    --body-bg-color: #e5ecef;
+    --theme-bg-color: #fafafb;
+    --body-color: #2f2f33;
+    --active-light-color: #e1ebfb;
+    --header-bg-color: #fff;
+    --search-border-color: #efefef;
+    --border-color: #d8d8d8;
+    --alert-bg-color: #e8f2ff;
+    --subtitle-color: #83838e;
+    --inactive-color: #f0f0f0;
+    --placeholder-color: #9b9ba5;
+    --time-button: #fc5757;
+    --level-button: #5052d5;
+    --button-color: #fff;
+}
+
+.mat-form-field-wrapper {
+    background-color: var(--header-bg-color) !important;
+}
+
+/* #logo {
+    margin-bottom: 5px;
+} */
+
+.job {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: var(--body-bg-color);
+}
+
+#currentPage {
+    color: var(--body-color) !important
+}
+
+#logout {
+    margin-left: 10%;
+}
+
+img {
+    max-width: 100%;
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    min-height: 100%;
+    min-width: 80%;
+    background-color: var(--body-bg-color);
+    font-family: var(--body-font);
+    font-size: 16px;
+    color: var(--body-color);
+    margin: 0
+}
+
+p,
+label,
+input,
+select,
+button {
+    font-size: 17px;
+}
+
+#side {
+    margin-right: 80px;
+}
+
+#user-name {
+    margin-right: 20px;
+}
+
+#logo-start-page {
+    max-width: 210px !important;
+}
+
+.header {
+    overflow: hidden;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    margin-top: -0.3%;
+    transition: box-shadow 0.3s;
+    flex-shrink: 0;
+    padding: 0 40px;
+    white-space: nowrap;
+    background-color: var(--header-bg-color);
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    justify-content: space-between;
+    z-index: 1;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* .header-menu a {
+    margin-left: -100px;
+} */
+
+.header-menu a,
+a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a {
+    color: var(--body-color);
+}
+
+.header-menu a {
+    color: var(--header-active-color);
+}
+
+.header-menu a:hover {
+    color: var(--header-menu-active);
+}
+
+.header-menu a:not(:first-child) {
+    margin-left: 30px;
+}
+
+/* .header-menu a.homeActive {
+    color: var(--active-color);
+} */
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.sideHeader {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.logo svg {
+    width: 24px;
+    /* margin-right: 12px; */
+}
+
+#logout-icon {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#moreInfoButton {
+    background-color: var(--header-bg-color);
+    color: var(--header-bg-color);
+    border: none;
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 620px) {
+    .header-menu a:not(:first-child) {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .header-menu {
+        display: none;
+    }
+}
+
+#title-project {
+    margin-left: 50px;
+    margin-top: -60px;
+    font-size: 20px;
+}
+
+#title-img {
+    margin-left: -5px;
+    margin-top: 15px;
+}
+
+.mat-form-field {
+    background-color: var(--body-color);
+    display: table-cell !important;
+}
+
+.mat-step-header .mat-step-label,
+.mat-step-header .mat-step-optional,
+.mat-select-arrow,
+.mat-select-value,
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after,
+.mat-header-cell,
+.mat-cell,
+.mat-footer-cell {
+    color: var(--body-color) !important;
+}
+
+.mat-select-panel {
+    background-color: var(--option-color) !important;
+}
+
+.mat-horizontal-stepper-header::before,
+.mat-horizontal-stepper-header::after,
+.mat-stepper-horizontal-line {
+    border-top-color: var(--body-color) !important;
+}
+
+.reading-block,
+.reading-label {
+    overflow: inherit !important;
+}
+
+.GaugePropper.reading-block .GaugePropper.reading-label {
+    margin-top: -20px;
+}
+
+.reading-label {
+    margin-top: -25px !important;
+}
+
+.reading-block {
+    margin-top: -35px !important;
+}
+
+.mat-expansion-panel-content {
+    font: inherit !important;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    font-family: var(--body-font) !important;
+    text-align: center !important;
+    padding-right: 24px !important;
+    padding-left: 24px !important;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+}
+
+.mat-radio-outer-circle {
+    border-color: var(--body-color);
+}
+
+th.mat-header-cell {
+    font-size: 15px !important;
+}
+
+.mat-expansion-panel-header:hover {
+    background: var(--option-color) !important;
+}
+
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #2228315c !important;
+}
+
+.mat-paginator-container,
+.mat-form-field {
+    background-color: var(--header-bg-color);
+}
+
+.mat-paginator-page-size-label,
+.mat-paginator-range-label,
+.mat-paginator-icon,
+.chart-legend .legend-label-text,
+.mat-option.mat-active,
+.mat-option {
+    color: var(--body-color) !important
+}
+
+.chart-legend .legend-labels {
+    background-color: var(--header-bg-color) !important;
+}
+
+.mat-option:hover {
+    background-color: var(--active-light-color) !important;
+}
+
+.ngx-charts text {
+    fill: #fff !important;
+}
+
+.ngx-charts .grid-panel rect {
+    fill: none !important;
+}
+
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger,
+text {
+    font-size: 14px !important;
+}
+
+.mat-accent .mat-slider-track-fill,
+.mat-slider-thumb-label,
+.mat-slider-thumb {
+    background-color: var(--active-light-color) !important;
+}
+
+.mat-form-field-prefix .mat-icon,
+.mat-form-field-suffix .mat-icon {
+    font-size: 135% !important;
+}
+
+.mat-tooltip {
+    font-size: 15px !important;
+}
+
+.mat-progress-bar-fill::after {
+    background-color: var(--active-light-color);
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: var(--icon-color);
+    color: var(--body-bg-color);
+}
+
+.mat-step-icon-content {
+    margin-top: 5% !important;
+}
+
+#logout-icon {
+    color: var(--body-color);
+}
+
+.mat-form-field-ripple,
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: var(--option-color) !important;
+}
+
+/* .mat-select-panel {
+    margin-top: 25px;
+} */
+
+::ng-deep .mat-placeholder-required .mat-form-field-required-marker .ng-tns-c117-0 .ng-star-inserted {
+    color: red !important;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: var(--body-bg-color);
+}
+
+.mat-input-element {
+    caret-color: var(--body-color) !important;
+}
+
+/* body::-webkit-scrollbar {
+    display: none;
+} */
